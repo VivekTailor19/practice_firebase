@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "792821712092",
+    "project_id": "practicefirebase-ebeee",
+    "storage_bucket": "practicefirebase-ebeee.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:792821712092:android:ae159065ddac656c3f2019",
+        "android_client_info": {
+          "package_name": "com.example.practice_firebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "792821712092-tdmduceqg3mf88o97nu4i3lcoo8uahvr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKAvM6ZkjbqLDd_S8Iurcq5yuNVXP84jY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "792821712092-tdmduceqg3mf88o97nu4i3lcoo8uahvr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
