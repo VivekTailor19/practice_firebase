@@ -134,10 +134,9 @@ class _Login_SignInState extends State<Login_SignIn> {
 
                         Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            InkWell(onTap: () {
+                            InkWell(onTap: () async {
 
-                              FirebaseHelper.firebaseHelper.googleLogin();
-
+                              await FirebaseHelper.firebaseHelper.googleLogin();
                               Get.offAllNamed("/welcome");
 
                               },
@@ -145,7 +144,10 @@ class _Login_SignInState extends State<Login_SignIn> {
                                   backgroundImage: NetworkImage("https://banner2.cleanpng.com/20180521/ers/kisspng-google-logo-5b02bbe1d5c6e0.2384399715269058258756.jpg"),)),
 
                             ElevatedButton(onPressed: () async {
+
                              await  FirebaseHelper.firebaseHelper.anonymous_login();
+                             Get.offAllNamed("/welcome");
+
                             }, child: Text("Guest"))
                           ],
                         )

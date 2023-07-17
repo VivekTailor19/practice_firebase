@@ -29,6 +29,7 @@ class FirebaseHelper
   Future<void> user_logout()
   async {
     await auth.signOut();
+    GoogleSignIn().signOut();
   }
 
   Future<UserCredential> googleLogin()

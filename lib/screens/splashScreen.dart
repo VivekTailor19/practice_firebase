@@ -25,8 +25,8 @@ class _SplashScreenState extends State<SplashScreen> {
 
     Future.delayed(Duration(seconds: 3),() =>
     userStatus == false
-        ? Get.toNamed("/signIn")
-        : Get.toNamed("/welcome"));
+        ? Get.offAllNamed("/signIn")
+        : Get.offAllNamed("/welcome"));
 
     return SafeArea(
       child: Scaffold(

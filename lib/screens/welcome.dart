@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:practicefirebase/utils/firebase_helper.dart';
 import 'package:sizer/sizer.dart';
 
@@ -129,6 +130,7 @@ class _Login_WelcomeState extends State<Login_Welcome> {
                         onPressed: () async {
 
                           await FirebaseHelper.firebaseHelper.user_logout();
+                          Get.toNamed("/signIn");
                         },
                         child: Text(
                           "Delete Account",
