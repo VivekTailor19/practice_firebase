@@ -26,6 +26,7 @@ class FirebaseHelper
     return user!=null;
   }
 
+
   Future<void> user_logout()
   async {
     await auth.signOut();
