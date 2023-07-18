@@ -23,10 +23,10 @@ class _Add_Product_ScreenState extends State<Add_Product_Screen> {
       child: Column(
         children:[
 
-          CustomTextField(hint: "Name",controller: tname),
-          CustomTextField(hint: "Price",controller: tprice),
-          CustomTextField(hint: "Category",controller: tcategory),
-          CustomTextField(hint: "Description",controller: tdescription),
+          CustomTextField(hint: "Name",controller: tname,kboard: TextInputType.text),
+          CustomTextField(hint: "Price",controller: tprice,kboard: TextInputType.number),
+          CustomTextField(hint: "Category",controller: tcategory,kboard: TextInputType.text),
+          CustomTextField(hint: "Description",controller: tdescription,kboard: TextInputType.text),
 
           SizedBox(height: 15,),
 
@@ -63,15 +63,20 @@ class _Add_Product_ScreenState extends State<Add_Product_Screen> {
     );
   }
 
-  Padding CustomTextField({controller,hint}) {
+  Padding CustomTextField({controller,hint,kboard}) {
     return Padding(
         padding:  EdgeInsets.all(10),
         child: TextField(
+          style: TextStyle(color: Color(0xff0A1172),fontSize: 16),
+          keyboardType: kboard,
           controller: controller,
           decoration: InputDecoration(
-            border: OutlineInputBorder(borderSide: BorderSide(color: Colors.black12),borderRadius: BorderRadius.circular(10)),
-            label: Text("Product $hint"),
-            focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.lightBlueAccent),borderRadius: BorderRadius.circular(10))
+            border: OutlineInputBorder(borderSide: BorderSide(color: Colors.red),borderRadius: BorderRadius.circular(10)),
+            label: Text("Product $hint",style: TextStyle(color: Color(0xff0A1172)),),
+            focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Color(0xff0A1172),width: 1.3),borderRadius: BorderRadius.circular(10)),
+            enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Color(0x550A1172),width: 1.3),borderRadius: BorderRadius.circular(10)),
+            enabled: true
+
           ),
         ),
       );

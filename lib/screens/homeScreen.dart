@@ -31,11 +31,14 @@ class _HomeScreenState extends State<HomeScreen> {
 
         child: Scaffold(
           appBar: AppBar(
+            backgroundColor: Color(0xff0A1172),
             elevation: 0,
             bottom: TabBar(tabs: [
               Tab(child: Text("Add Product"),),
               Tab(child: Text("Products"),),
-            ]),
+            ],
+            indicatorColor: Colors.white,
+            ),
           ),
           drawer: Drawer(
             backgroundColor: Color(0xff0A1172),
