@@ -73,4 +73,15 @@ class FirebaseHelper
           return "$e";
         }
       }
+
+      Map<String, String?> readUser()
+      {
+        User? user = auth.currentUser;
+
+        return {
+          'email':user!.email,
+          'name':user.displayName,
+          'photo':user.photoURL
+        };
+      }
 }

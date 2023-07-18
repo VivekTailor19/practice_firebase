@@ -97,9 +97,7 @@ class _Login_WelcomeState extends State<Login_Welcome> {
                       child: TextButton(
                         onPressed: () {
 
-                          // emial pass
-
-                          Navigator.pushNamed(context, "gallery");
+                          Get.toNamed("/home");
                         },
                         child: Text(
                           "Login as Bro",

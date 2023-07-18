@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:practicefirebase/firebase_options.dart';
+import 'package:practicefirebase/screens/homeScreen.dart';
 import 'package:practicefirebase/screens/signIn.dart';
 import 'package:practicefirebase/screens/signUp.dart';
 import 'package:practicefirebase/screens/splashScreen.dart';
@@ -20,7 +21,8 @@ Future<void> main() async {
           "/":(p0) => SplashScreen(),
           "/signUp":(p0) => Login_SignUp(),
           "/signIn":(p0) => Login_SignIn(),
-          "/welcome":(p0) => Login_Welcome()
+          "/welcome":(p0) => Login_Welcome(),
+          "/home":(p0) => HomeScreen(),
         },
       ),
     ),
