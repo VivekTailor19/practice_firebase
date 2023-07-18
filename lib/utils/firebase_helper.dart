@@ -1,11 +1,15 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:practicefirebase/model/productModel.dart';
 
 class FirebaseHelper
 {
-  static FirebaseHelper firebaseHelper = FirebaseHelper();
+  static FirebaseHelper firebaseHelper = FirebaseHelper._();
+  FirebaseHelper._();
 
   FirebaseAuth auth = FirebaseAuth.instance;
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   Future<String> anonymous_login()
   async {
@@ -48,34 +52,32 @@ class FirebaseHelper
       return await FirebaseAuth.instance.signInWithCredential(credential);
       }
 
+  Future<String> emailSignUp({email,password})
+  async {
 
+try{
+  await auth.createUserWithEmailAndPassword(email: email, password: password);
+  return "Success";
+}catch(e)
+    {
+      return "$e";
+    }
 
-      Future<String> emailSignUp({email,password})
-      async {
+  }
 
+  Future<String> emailSignIn({email,password})
+  async {
     try{
-      await auth.createUserWithEmailAndPassword(email: email, password: password);
+      await auth.signInWithEmailAndPassword(email: email, password: password);
       return "Success";
     }catch(e)
-        {
-          return "$e";
-        }
+    {
+      return "$e";
+    }
+  }
 
-      }
-
-      Future<String> emailSignIn({email,password})
-      async {
-        try{
-          await auth.signInWithEmailAndPassword(email: email, password: password);
-          return "Success";
-        }catch(e)
-        {
-          return "$e";
-        }
-      }
-
-      Map<String, String?> readUser()
-      {
+  Map<String, String?> readUser()
+    {
         User? user = auth.currentUser;
 
         return {
@@ -84,4 +86,23 @@ class FirebaseHelper
           'photo':user.photoURL
         };
       }
+      
+      
+      
+/*  ======================FireBase FireStore =============================================== */
+
+  
+  void addInFireStore(ProductModel model)
+  {
+    firestore.collection("ShoppingStore").add({
+      "pname":model.name,
+      "pprice":model.price,
+      "pcategory":model.category,
+      "pdesc":model.description
+    });
+  
+  }
+
+
+
 }
