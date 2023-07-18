@@ -71,7 +71,7 @@ class _Add_Product_ScreenState extends State<Add_Product_Screen> {
           keyboardType: kboard,
           controller: controller,
           decoration: InputDecoration(
-            border: OutlineInputBorder(borderSide: BorderSide(color: Colors.red),borderRadius: BorderRadius.circular(10)),
+            border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
             label: Text("Product $hint",style: TextStyle(color: Color(0xff0A1172)),),
             focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Color(0xff0A1172),width: 1.3),borderRadius: BorderRadius.circular(10)),
             enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Color(0x550A1172),width: 1.3),borderRadius: BorderRadius.circular(10)),
