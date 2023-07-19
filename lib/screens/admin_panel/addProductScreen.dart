@@ -17,6 +17,7 @@ class _Add_Product_ScreenState extends State<Add_Product_Screen> {
   TextEditingController tprice = TextEditingController();
   TextEditingController tdescription = TextEditingController();
   TextEditingController tcategory = TextEditingController();
+  TextEditingController timgUrl = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -27,6 +28,7 @@ class _Add_Product_ScreenState extends State<Add_Product_Screen> {
           CustomTextField(hint: "Price",controller: tprice,kboard: TextInputType.number),
           CustomTextField(hint: "Category",controller: tcategory,kboard: TextInputType.text),
           CustomTextField(hint: "Description",controller: tdescription,kboard: TextInputType.text),
+          CustomTextField(hint: "Image URL",controller: timgUrl,kboard: TextInputType.text),
 
           SizedBox(height: 15,),
 
@@ -36,7 +38,8 @@ class _Add_Product_ScreenState extends State<Add_Product_Screen> {
                 name: tname.text,
                 price: tprice.text,
                 category: tcategory.text,
-                description: tdescription.text
+                description: tdescription.text,
+                img: timgUrl.text
               );
 
               FirebaseHelper.firebaseHelper.addInFireStore(model);
@@ -45,9 +48,9 @@ class _Add_Product_ScreenState extends State<Add_Product_Screen> {
               tcategory.clear();
               tdescription.clear();
               tprice.clear();
+              timgUrl.clear();
 
               Get.snackbar('Update', "Your Product Data is Updated in The Firebase CloudStore",snackPosition: SnackPosition.BOTTOM);
-
 
             },
             child: Container(height: 60,width: 120,

@@ -1,6 +1,6 @@
 class ProductModel
 {
-  String? name, price, category, description;
+  String? id,name, price, category, description,img;
 
-  ProductModel({this.name, this.price, this.category, this.description});
+  ProductModel({this.id,this.name, this.price, this.category, this.description,this.img});
 }

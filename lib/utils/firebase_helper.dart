@@ -98,9 +98,16 @@ try{
       "pname":model.name,
       "pprice":model.price,
       "pcategory":model.category,
-      "pdesc":model.description
+      "pdesc":model.description,
+      "pimg":model.img
     });
   
+  }
+
+
+  Stream<QuerySnapshot<Map<String, dynamic>>> readFireStore()
+  {
+    return firestore.collection("ShoppingStore").snapshots();
   }
 
 
