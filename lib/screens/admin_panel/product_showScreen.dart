@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:practicefirebase/model/productModel.dart';
 import 'package:practicefirebase/utils/firebase_helper.dart';
 import 'package:sizer/sizer.dart';
@@ -50,8 +51,7 @@ class _ProductListShowState extends State<ProductListShow> {
 
               return Container(height: 150,width: 100.w,
               margin: EdgeInsets.all(10),
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(5),color: Color(
-                  0xffaaf3f2)),
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(5),),
               child: Row(children: [
                 SizedBox(width: 10,),
                  ClipRRect(borderRadius: BorderRadius.circular(10),child: Image.network(productItems[index].img != null ? "${productItems[index].img}": "https://images.freeimages.com/images/previews/ac9/railway-hdr-1361893.jpg",height: 135,width: 120,fit: BoxFit.contain,),),
@@ -66,7 +66,29 @@ class _ProductListShowState extends State<ProductListShow> {
                   Spacer(),
                   Text("${productItems[index].category}",style: TextStyle(fontWeight: FontWeight.w300,fontSize: 13),),
                     SizedBox(height: 20,),
-                ],)
+                ],),
+                Spacer(),
+                Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    IconButton(
+                      icon: Icon(Icons.delete),
+                      color: Colors.red.shade300,
+                      onPressed: () {
+                        print("Delete pressed-------------------");
+                      FirebaseHelper.firebaseHelper.deleteItem("${productItems[index].id}");
+                    },),
+
+                    IconButton(
+                      icon: Icon(Icons.edit),
+                      color: Colors.blueGrey.shade300,
+                      onPressed: () {
+                        print("Update pressed-------------------");
+                        Get.toNamed("/updateItem", arguments: productItems[index]);
+
+                      },
+                    ),
+                  ],
+                )
 
               ],),);
 

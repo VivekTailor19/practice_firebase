@@ -111,5 +111,22 @@ try{
   }
 
 
+  void deleteItem(String id)
+  {
+    firestore.collection("ShoppingStore").doc(id).delete();
+  }
+
+  void updateItem(ProductModel model)
+  {
+    firestore.collection("ShoppingStore").doc(model.id).set({
+      "pname":model.name,
+      "pprice":model.price,
+      "pcategory":model.category,
+      "pdesc":model.description,
+      "pimg":model.img
+    });
+  }
+
+
 
 }
