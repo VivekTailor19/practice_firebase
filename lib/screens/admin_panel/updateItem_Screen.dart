@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:practicefirebase/model/productModel.dart';
+import 'package:practicefirebase/service/notification_Service.dart';
 
 import '../../utils/firebase_helper.dart';
 
@@ -80,9 +81,12 @@ class _UpdateItem_ScreenState extends State<UpdateItem_Screen> {
                   tprice.clear();
                   timgUrl.clear();
 
+                  NotificationService.service.timeNotification();
+
+
                   Get.back();
 
-                  Get.snackbar('Update', "Your Product Data is Updated in The Firebase CloudStore",snackPosition: SnackPosition.BOTTOM);
+                //  Get.snackbar('Update', "Your Product Data is Updated in The Firebase CloudStore",snackPosition: SnackPosition.BOTTOM);
 
                 },
                 child: Container(height: 60,width: 120,

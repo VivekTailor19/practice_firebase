@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:practicefirebase/screens/admin_panel/addProductScreen.dart';
+import 'package:practicefirebase/service/notification_Service.dart';
 import 'package:practicefirebase/utils/firebase_helper.dart';
 import 'package:sizer/sizer.dart';
 
@@ -31,6 +32,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
         child: Scaffold(
           appBar: AppBar(
+            leading: IconButton(icon: Icon(Icons.menu),onPressed: () {
+              NotificationService.service.simpleNotification();
+            },),
             backgroundColor: Color(0xff0A1172),
             elevation: 0,
             bottom: TabBar(tabs: [

@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:practicefirebase/model/productModel.dart';
+import 'package:practicefirebase/service/notification_Service.dart';
 import 'package:practicefirebase/utils/firebase_helper.dart';
 import 'package:sizer/sizer.dart';
 
@@ -76,6 +77,8 @@ class _ProductListShowState extends State<ProductListShow> {
                       onPressed: () {
                         print("Delete pressed-------------------");
                       FirebaseHelper.firebaseHelper.deleteItem("${productItems[index].id}");
+
+
                     },),
 
                     IconButton(

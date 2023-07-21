@@ -8,6 +8,7 @@ import 'package:practicefirebase/screens/signIn.dart';
 import 'package:practicefirebase/screens/signUp.dart';
 import 'package:practicefirebase/screens/splashScreen.dart';
 import 'package:practicefirebase/screens/welcome.dart';
+import 'package:practicefirebase/service/notification_Service.dart';
 import 'package:sizer/sizer.dart';
 
 Future<void> main() async {
@@ -15,6 +16,9 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  NotificationService.service.notificationsPlugin;
+
   runApp(
     Sizer(builder: (context, orientation, deviceType) => GetMaterialApp(
         debugShowCheckedModeBanner: false,
