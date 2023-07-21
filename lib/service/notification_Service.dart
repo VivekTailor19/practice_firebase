@@ -19,11 +19,13 @@ class NotificationService
     InitializationSettings( android: androidInit, iOS: iOSInit );
 
     await notificationsPlugin.initialize(initializationSettings);
+    tz.initializeTimeZones();
+
   }
 
   void simpleNotification()
   {
-    AndroidNotificationDetails androidDetails = AndroidNotificationDetails("1", "simple");
+    AndroidNotificationDetails androidDetails = AndroidNotificationDetails("1", "simple",priority: Priority.high,importance: Importance.max);
 
     DarwinNotificationDetails iOSDetails = DarwinNotificationDetails();
 
@@ -38,14 +40,14 @@ class NotificationService
 
   void timeNotification()
   {
-    AndroidNotificationDetails androidDetails = AndroidNotificationDetails("10", "Schedule",color: Colors.greenAccent);
+    AndroidNotificationDetails androidDetails = AndroidNotificationDetails("10", "Schedule",priority: Priority.high,importance: Importance.max);
 
     DarwinNotificationDetails iOSDetails = DarwinNotificationDetails();
 
     NotificationDetails notificationDetails =
     NotificationDetails( android:  androidDetails, iOS:  iOSDetails);
 
-    notificationsPlugin.zonedSchedule(4 ,
+    notificationsPlugin.zonedSchedule(6 ,
       "Schedule Testing",
       "The item you selected is Updated From the FireStore",
       tz.TZDateTime.now(tz.local).add(Duration(seconds: 3)),

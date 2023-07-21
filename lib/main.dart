@@ -17,7 +17,7 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  NotificationService.service.notificationsPlugin;
+  NotificationService.service.initNotification();
 
   runApp(
     Sizer(builder: (context, orientation, deviceType) => GetMaterialApp(

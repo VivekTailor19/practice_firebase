@@ -25,14 +25,18 @@ class _HomeScreenState extends State<HomeScreen> {
   }
   @override
   Widget build(BuildContext context) {
+    var scaffoldKey = GlobalKey<ScaffoldState>();
+
     return SafeArea(
       child: DefaultTabController(
         length: 2,
 
 
         child: Scaffold(
+          key: scaffoldKey,
           appBar: AppBar(
             leading: IconButton(icon: Icon(Icons.menu),onPressed: () {
+              scaffoldKey.currentState?.openDrawer();
               NotificationService.service.simpleNotification();
             },),
             backgroundColor: Color(0xff0A1172),

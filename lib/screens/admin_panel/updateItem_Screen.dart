@@ -80,11 +80,12 @@ class _UpdateItem_ScreenState extends State<UpdateItem_Screen> {
                   tdescription.clear();
                   tprice.clear();
                   timgUrl.clear();
-
+                  Get.back();
                   NotificationService.service.timeNotification();
 
 
-                  Get.back();
+
+
 
                 //  Get.snackbar('Update', "Your Product Data is Updated in The Firebase CloudStore",snackPosition: SnackPosition.BOTTOM);
 
@@ -92,7 +93,7 @@ class _UpdateItem_ScreenState extends State<UpdateItem_Screen> {
                 child: Container(height: 60,width: 120,
                   decoration: BoxDecoration(borderRadius: BorderRadius.circular(30),color: Color(0xff0A1172)),
                   alignment: Alignment.center,
-                  child: Text("Add",style: TextStyle(fontSize: 22,color: Colors.white,fontWeight: FontWeight.w300),),
+                  child: Text("Update",style: TextStyle(fontSize: 22,color: Colors.white,fontWeight: FontWeight.w300),),
                 ),
               ),
 
