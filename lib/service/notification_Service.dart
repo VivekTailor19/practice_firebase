@@ -25,7 +25,9 @@ class NotificationService
 
   void simpleNotification()
   {
-    AndroidNotificationDetails androidDetails = AndroidNotificationDetails("1", "simple",priority: Priority.high,importance: Importance.max);
+    AndroidNotificationDetails androidDetails = AndroidNotificationDetails("1", "simple",
+        priority: Priority.high, importance: Importance.max,
+        sound: RawResourceAndroidNotificationSound('baburao') );
 
     DarwinNotificationDetails iOSDetails = DarwinNotificationDetails();
 
@@ -40,7 +42,11 @@ class NotificationService
 
   void timeNotification()
   {
-    AndroidNotificationDetails androidDetails = AndroidNotificationDetails("10", "Schedule",priority: Priority.high,importance: Importance.max);
+    AndroidNotificationDetails androidDetails = AndroidNotificationDetails("10",
+        "Schedule",
+        priority: Priority.high,importance: Importance.max,
+        sound: RawResourceAndroidNotificationSound('khopdi')
+    );
 
     DarwinNotificationDetails iOSDetails = DarwinNotificationDetails();
 
