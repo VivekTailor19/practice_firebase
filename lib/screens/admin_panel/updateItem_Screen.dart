@@ -80,7 +80,7 @@ class _UpdateItem_ScreenState extends State<UpdateItem_Screen> {
                   tdescription.clear();
                   tprice.clear();
                   timgUrl.clear();
-                  Get.back();
+                   Get.back();
                   NotificationService.service.timeNotification();
 
 
