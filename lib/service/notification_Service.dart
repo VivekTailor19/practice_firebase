@@ -1,4 +1,7 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/data/latest_all.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
@@ -61,5 +64,33 @@ class NotificationService
       uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime, );
 
   }
+
+  Future<void> pictureNotification()
+  async {
+
+    Uint8List img= await _getByteArrayFromUrl('https://www.simplilearn.com/ice9/free_resources_article_thumb/what_is_image_Processing.jpg');
+
+    ByteArrayAndroidBitmap bigImage= ByteArrayAndroidBitmap(img);
+
+    BigPictureStyleInformation big = BigPictureStyleInformation(bigImage);
+
+    AndroidNotificationDetails android = AndroidNotificationDetails("11", "big",
+    styleInformation:  big,
+      priority: Priority.high,
+      importance: Importance.max
+    );
+
+    NotificationDetails notificationDetails = NotificationDetails(android: android);
+
+    await notificationsPlugin.show(12, "Testing BIG PICTURE", "Flutter BIG", notificationDetails);
+
+  }
+
+  Future<Uint8List> _getByteArrayFromUrl(String url) async {
+    final http.Response response = await http.get(Uri.parse(url));
+    return response.bodyBytes;
+  }
+
+
 
 }
