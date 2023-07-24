@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:practicefirebase/screens/admin_panel/addProductScreen.dart';
 import 'package:practicefirebase/service/notification_Service.dart';
@@ -39,7 +38,8 @@ class _HomeScreenState extends State<HomeScreen> {
           floatingActionButton: FloatingActionButton(onPressed: () {
             NotificationService.service.pictureNotification();
           },
-          child: Icon(Icons.notification_important_outlined),
+          child: Icon(Icons.notification_important_outlined,size: 30,color: Colors.amber,),
+            backgroundColor: Color(0xff0A1172),
           ),
 
           appBar: AppBar(
