@@ -35,11 +35,22 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Scaffold(
           key: scaffoldKey,
 
-          floatingActionButton: FloatingActionButton(onPressed: () {
-            NotificationService.service.pictureNotification();
-          },
-          child: Icon(Icons.notification_important_outlined,size: 30,color: Colors.amber,),
-            backgroundColor: Color(0xff0A1172),
+          floatingActionButton: Row(mainAxisAlignment:MainAxisAlignment.spaceAround,
+            children: [
+              FloatingActionButton(onPressed: () {
+                NotificationService.service.pictureNotification();
+              },
+              child: Icon(Icons.notification_important_outlined,size: 30,color: Colors.amber,),
+                backgroundColor: Color(0xff0A1172),
+              ),
+
+              FloatingActionButton(onPressed: () {
+                NotificationService.service.bigPictureDownloadNotification();
+              },
+              child: Icon(Icons.notification_important_outlined,size: 30,color: Colors.teal,),
+                backgroundColor: Color(0xff0A1172),
+              ),
+            ],
           ),
 
           appBar: AppBar(

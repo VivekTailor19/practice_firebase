@@ -1,8 +1,10 @@
+import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:timezone/data/latest_all.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 
@@ -65,6 +67,7 @@ class NotificationService
 
   }
 
+// ======================           picture Notification   ByteArrayFromUrl  =============================
   Future<void> pictureNotification()
   async {
 
@@ -91,6 +94,35 @@ class NotificationService
     return response.bodyBytes;
   }
 
+// ======================           picture Notification  download & savefile  =============================
 
+  Future<String> _downloadAndSaveFile(String url, String fileName) async {
+    final Directory directory = await getApplicationDocumentsDirectory();
+    final String filePath = '${directory.path}/$fileName';
+    final http.Response response = await http.get(Uri.parse(url));
+    final File file = File(filePath);
+    await file.writeAsBytes(response.bodyBytes);
+    return filePath;
+  }
+
+  Future<void> bigPictureDownloadNotification()
+  async {
+    final String bigPicturePath = await _downloadAndSaveFile(
+        'https://images.pexels.com/photos/1261728/pexels-photo-1261728.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', 'bigPicture');
+
+    final BigPictureStyleInformation bigPictureStyleInformation =
+    BigPictureStyleInformation(FilePathAndroidBitmap(bigPicturePath),
+        contentTitle: 'overridden <b>big</b> content title',
+        htmlFormatContentTitle: true,
+        summaryText: 'summary <i>text</i>',
+        htmlFormatSummaryText: true);
+
+    AndroidNotificationDetails androidDetails = AndroidNotificationDetails("15", "Picture Notification Down&Save",
+        priority: Priority.high,importance: Importance.max,styleInformation: bigPictureStyleInformation);
+
+    NotificationDetails notificationDetails = NotificationDetails(android: androidDetails);
+
+    await notificationsPlugin.show(15, "Picture Down&Save", "Picture Add Successfully", notificationDetails);
+  }
 
 }
