@@ -2,9 +2,11 @@ import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:practicefirebase/model/productModel.dart';
+import 'package:practicefirebase/service/notification_Service.dart';
 
 class FirebaseHelper
 {
@@ -129,6 +131,29 @@ try{
       "pimg":model.img
     });
   }
+
+
+
+  // =========================    firestore messaging ====================================
+
+Future<void> initMessaging()
+async {
+  final fcmToken = await FirebaseMessaging.instance.getToken();
+
+  print("Token ====  $fcmToken");
+
+  FirebaseMessaging.onMessage.listen((msg) {
+    var notify = msg.notification;
+
+    if(notify!=null)
+      {
+        var title = notify.title;
+        var body = notify.body;
+
+        NotificationService.service.fireNotification(title: title,body: body);
+      }
+  });
+}
 
 
 }

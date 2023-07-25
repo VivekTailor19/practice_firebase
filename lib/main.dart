@@ -9,6 +9,7 @@ import 'package:practicefirebase/screens/signUp.dart';
 import 'package:practicefirebase/screens/splashScreen.dart';
 import 'package:practicefirebase/screens/welcome.dart';
 import 'package:practicefirebase/service/notification_Service.dart';
+import 'package:practicefirebase/utils/firebase_helper.dart';
 import 'package:sizer/sizer.dart';
 
 Future<void> main() async {
@@ -18,6 +19,7 @@ Future<void> main() async {
   );
 
   NotificationService.service.initNotification();
+  FirebaseHelper.firebaseHelper.initMessaging();
 
   runApp(
     Sizer(builder: (context, orientation, deviceType) => GetMaterialApp(

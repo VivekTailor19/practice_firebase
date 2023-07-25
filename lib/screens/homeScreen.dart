@@ -35,23 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Scaffold(
           key: scaffoldKey,
 
-          floatingActionButton: Row(mainAxisAlignment:MainAxisAlignment.spaceAround,
-            children: [
-              FloatingActionButton(onPressed: () {
-                NotificationService.service.pictureNotification();
-              },
-              child: Icon(Icons.notification_important_outlined,size: 30,color: Colors.amber,),
-                backgroundColor: Color(0xff0A1172),
-              ),
 
-              FloatingActionButton(onPressed: () {
-                NotificationService.service.bigPictureDownloadNotification();
-              },
-              child: Icon(Icons.notification_important_outlined,size: 30,color: Colors.teal,),
-                backgroundColor: Color(0xff0A1172),
-              ),
-            ],
-          ),
 
           appBar: AppBar(
             leading: IconButton(icon: Icon(Icons.menu),onPressed: () {
@@ -82,6 +66,16 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Text("${mapData['name']}",style: TextStyle(color: Colors.white,fontSize: 25.sp),),
                   ),
                   Text("${mapData['email']}",style: TextStyle(color: Colors.white,fontSize: 14.sp),),
+
+                  SizedBox(height: 50,),
+                  TextButton(child: Text("Download&Save Notification"),onPressed: () {
+                    NotificationService.service.bigPictureDownloadNotification();
+                  },),
+                  SizedBox(height: 10,),
+                  TextButton(child: Text("Picture Notification"),onPressed: () {
+                    NotificationService.service.pictureNotification();
+                  },),
+
 
                 ],
               ),

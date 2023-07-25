@@ -125,4 +125,25 @@ class NotificationService
     await notificationsPlugin.show(15, "Picture Down&Save", "Picture Add Successfully", notificationDetails);
   }
 
+
+// ======================           fire notification bro  =============================
+
+  void fireNotification({title,body})
+  {
+    AndroidNotificationDetails androidDetails = AndroidNotificationDetails("16", "fire",
+        priority: Priority.high, importance: Importance.max,
+         );
+
+    DarwinNotificationDetails iOSDetails = DarwinNotificationDetails();
+
+    NotificationDetails notificationDetails =
+    NotificationDetails( android:  androidDetails, iOS:  iOSDetails);
+
+    notificationsPlugin.show(3,
+        "$title",
+        "$body",
+        notificationDetails);
+  }
+
+
 }
